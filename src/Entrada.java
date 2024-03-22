@@ -1,5 +1,6 @@
 
 import javax.swing.DefaultComboBoxModel;
+import javax.swing.JOptionPane;
 
 /*
  * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
@@ -63,10 +64,10 @@ public class Entrada extends javax.swing.JFrame {
         jLabel8 = new javax.swing.JLabel();
         jl_cronometro = new javax.swing.JLabel();
         jLabel9 = new javax.swing.JLabel();
-        jl_nomCarro2 = new javax.swing.JLabel();
         jl_nombreCarro2 = new javax.swing.JLabel();
-        jpb_car2 = new javax.swing.JProgressBar();
+        jl_nombreCarro1 = new javax.swing.JLabel();
         jpb_carro2 = new javax.swing.JProgressBar();
+        jpb_carro1 = new javax.swing.JProgressBar();
         jButton5 = new javax.swing.JButton();
         jPanel1 = new javax.swing.JPanel();
         jLabel1 = new javax.swing.JLabel();
@@ -104,6 +105,11 @@ public class Entrada extends javax.swing.JFrame {
         bt_crearCarro.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 bt_crearCarroMouseClicked(evt);
+            }
+        });
+        bt_crearCarro.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                bt_crearCarroActionPerformed(evt);
             }
         });
         jPanel2.add(bt_crearCarro, new org.netbeans.lib.awtextra.AbsoluteConstraints(230, 330, 110, -1));
@@ -188,7 +194,12 @@ public class Entrada extends javax.swing.JFrame {
         jPanel3.add(jllable5, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 300, 80, 20));
 
         jButton4.setText("Iniciar");
-        jPanel3.add(jButton4, new org.netbeans.lib.awtextra.AbsoluteConstraints(240, 360, 120, -1));
+        jButton4.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jButton4MouseClicked(evt);
+            }
+        });
+        jPanel3.add(jButton4, new org.netbeans.lib.awtextra.AbsoluteConstraints(240, 370, 120, 30));
 
         jl_jug2Marca.setFont(new java.awt.Font("Segoe UI", 2, 12)); // NOI18N
         jl_jug2Marca.setForeground(new java.awt.Color(0, 0, 0));
@@ -228,7 +239,7 @@ public class Entrada extends javax.swing.JFrame {
         );
         jd_partidaLayout.setVerticalGroup(
             jd_partidaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jPanel3, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addComponent(jPanel3, javax.swing.GroupLayout.DEFAULT_SIZE, 413, Short.MAX_VALUE)
         );
 
         jPanel4.setBackground(new java.awt.Color(153, 0, 0));
@@ -248,21 +259,38 @@ public class Entrada extends javax.swing.JFrame {
         jLabel9.setText("Progreso");
         jPanel4.add(jLabel9, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 120, 110, -1));
 
-        jl_nomCarro2.setText("nombre carro 1");
-        jPanel4.add(jl_nomCarro2, new org.netbeans.lib.awtextra.AbsoluteConstraints(80, 260, 160, -1));
-
+        jl_nombreCarro2.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
         jl_nombreCarro2.setText("nombre carro 1");
-        jPanel4.add(jl_nombreCarro2, new org.netbeans.lib.awtextra.AbsoluteConstraints(80, 160, 160, -1));
+        jPanel4.add(jl_nombreCarro2, new org.netbeans.lib.awtextra.AbsoluteConstraints(80, 260, 160, -1));
 
-        jpb_car2.setMaximum(500);
-        jPanel4.add(jpb_car2, new org.netbeans.lib.awtextra.AbsoluteConstraints(80, 300, 240, 40));
+        jl_nombreCarro1.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
+        jl_nombreCarro1.setText("nombre carro 1");
+        jPanel4.add(jl_nombreCarro1, new org.netbeans.lib.awtextra.AbsoluteConstraints(80, 160, 160, -1));
 
         jpb_carro2.setMaximum(500);
-        jPanel4.add(jpb_carro2, new org.netbeans.lib.awtextra.AbsoluteConstraints(80, 200, 240, 40));
+        jpb_carro2.addChangeListener(new javax.swing.event.ChangeListener() {
+            public void stateChanged(javax.swing.event.ChangeEvent evt) {
+                jpb_carro2StateChanged(evt);
+            }
+        });
+        jPanel4.add(jpb_carro2, new org.netbeans.lib.awtextra.AbsoluteConstraints(80, 300, 240, 40));
+
+        jpb_carro1.setMaximum(500);
+        jpb_carro1.addChangeListener(new javax.swing.event.ChangeListener() {
+            public void stateChanged(javax.swing.event.ChangeEvent evt) {
+                jpb_carro1StateChanged(evt);
+            }
+        });
+        jPanel4.add(jpb_carro1, new org.netbeans.lib.awtextra.AbsoluteConstraints(80, 200, 240, 40));
 
         jButton5.setBackground(new java.awt.Color(255, 255, 51));
         jButton5.setForeground(new java.awt.Color(0, 0, 0));
         jButton5.setText("Iniciar");
+        jButton5.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jButton5MouseClicked(evt);
+            }
+        });
         jPanel4.add(jButton5, new org.netbeans.lib.awtextra.AbsoluteConstraints(160, 370, -1, -1));
 
         javax.swing.GroupLayout jd_jugarLayout = new javax.swing.GroupLayout(jd_jugar.getContentPane());
@@ -349,10 +377,24 @@ public class Entrada extends javax.swing.JFrame {
     }//GEN-LAST:event_jButton2MouseClicked
 
     private void jButton1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButton1MouseClicked
+//        adminCarros ac = new adminCarros("./carrosPapoy");
+//        ac.cargarArchivo();
+//        DefaultComboBoxModel modeloJug1 = (DefaultComboBoxModel)jcb_jugador1.getModel();
+//        DefaultComboBoxModel modeloJug2 = (DefaultComboBoxModel)jcb_juga2.getModel();
+//        modeloJug1.removeAllElements();
+//        modeloJug2.removeAllElements();
+//        
+//        for (int i = 0; i < ac.getListacarros().size(); i++) {
+//            Carro carrito = ac.getListacarros().get(i);
+//            modeloJug1.addElement(carrito);
+//            modeloJug2.addElement(carrito);
+//        }
+        
         this.setVisible(false);
         //jd_partida.setLocationRelativeTo(null);
         jd_partida.pack();
         jd_partida.setVisible(true);
+        
         
         
         
@@ -373,12 +415,15 @@ public class Entrada extends javax.swing.JFrame {
         
         Carro car = new Carro(marca, modelo, vel);
         adminCarros ac = new adminCarros("./carrosPapoy");
+        DefaultComboBoxModel modeloJug1 = (DefaultComboBoxModel)jcb_jugador1.getModel();
+        DefaultComboBoxModel modeloJug2 = (DefaultComboBoxModel)jcb_juga2.getModel();
         ac.cargarArchivo();
+        
         ac.getListacarros().add(car);
         ac.escribirArchivo();
         
-        DefaultComboBoxModel modeloJug1 = (DefaultComboBoxModel)jcb_jugador1.getModel();
-        DefaultComboBoxModel modeloJug2 = (DefaultComboBoxModel)jcb_juga2.getModel();
+//        DefaultComboBoxModel modeloJug1 = (DefaultComboBoxModel)jcb_jugador1.getModel();
+//        DefaultComboBoxModel modeloJug2 = (DefaultComboBoxModel)jcb_juga2.getModel();
         modeloJug1.removeAllElements();
         modeloJug2.removeAllElements();
         
@@ -405,6 +450,8 @@ public class Entrada extends javax.swing.JFrame {
        jl_jug1Marca.setText(carrito.getMarca());
        jl_jug1Modelo.setText(carrito.getModelo());
        jl_jug1Velocidad.setText(String.valueOf(carrito.getVelocidad())); 
+        
+    
     }//GEN-LAST:event_jcb_jugador1ItemStateChanged
 
     private void jcb_juga2ItemStateChanged(java.awt.event.ItemEvent evt) {//GEN-FIRST:event_jcb_juga2ItemStateChanged
@@ -414,6 +461,57 @@ public class Entrada extends javax.swing.JFrame {
         jl_jug2Modelo.setText(carrito.getModelo());
         jl_jug2Velocidad.setText(String.valueOf(carrito.getVelocidad())); 
     }//GEN-LAST:event_jcb_juga2ItemStateChanged
+
+    private void jButton4MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButton4MouseClicked
+        DefaultComboBoxModel modelo = (DefaultComboBoxModel)jcb_jugador1.getModel();
+        DefaultComboBoxModel modelo2 = (DefaultComboBoxModel)jcb_juga2.getModel();
+        Carro car1 = (Carro)modelo.getSelectedItem();
+        Carro car2 = (Carro)modelo2.getSelectedItem();
+        jl_nombreCarro1.setText(car1.getModelo());
+        jl_nombreCarro2.setText(car2.getModelo());
+        jd_partida.setVisible(false);
+        jd_jugar.pack();
+        jd_jugar.setVisible(true);
+        
+        
+    }//GEN-LAST:event_jButton4MouseClicked
+
+    private void jButton5MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButton5MouseClicked
+        DefaultComboBoxModel modelo = (DefaultComboBoxModel)jcb_jugador1.getModel();
+        DefaultComboBoxModel modelo2 = (DefaultComboBoxModel)jcb_juga2.getModel();
+        Carro car1 = (Carro)modelo.getSelectedItem();
+        Carro car2 = (Carro)modelo2.getSelectedItem();
+        
+        adminBarras barritas = new adminBarras(jpb_carro1, jpb_carro2, car1.getVelocidad(), car2.getVelocidad(), true);
+        barritas.run();
+        
+        
+        
+        
+        
+        
+        
+        
+    }//GEN-LAST:event_jButton5MouseClicked
+
+    private void bt_crearCarroActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bt_crearCarroActionPerformed
+        
+        
+        
+    }//GEN-LAST:event_bt_crearCarroActionPerformed
+
+    private void jpb_carro1StateChanged(javax.swing.event.ChangeEvent evt) {//GEN-FIRST:event_jpb_carro1StateChanged
+        
+        if (jpb_carro1.getValue() == 500) {
+            JOptionPane.showMessageDialog(jd_jugar, "El jugador 1 ha ganado");
+        }
+    }//GEN-LAST:event_jpb_carro1StateChanged
+
+    private void jpb_carro2StateChanged(javax.swing.event.ChangeEvent evt) {//GEN-FIRST:event_jpb_carro2StateChanged
+        if (jpb_carro2.getValue() == 500) {
+            JOptionPane.showMessageDialog(jd_jugar, "El jugador 2 ha ganado");
+        }
+    }//GEN-LAST:event_jpb_carro2StateChanged
 
     /**
      * @param args the command line arguments
@@ -482,7 +580,7 @@ public class Entrada extends javax.swing.JFrame {
     private javax.swing.JLabel jl_jug2Marca;
     private javax.swing.JLabel jl_jug2Modelo;
     private javax.swing.JLabel jl_jug2Velocidad;
-    private javax.swing.JLabel jl_nomCarro2;
+    private javax.swing.JLabel jl_nombreCarro1;
     private javax.swing.JLabel jl_nombreCarro2;
     private javax.swing.JLabel jllable;
     private javax.swing.JLabel jllable1;
@@ -490,10 +588,12 @@ public class Entrada extends javax.swing.JFrame {
     private javax.swing.JLabel jllable3;
     private javax.swing.JLabel jllable4;
     private javax.swing.JLabel jllable5;
-    private javax.swing.JProgressBar jpb_car2;
+    private javax.swing.JProgressBar jpb_carro1;
     private javax.swing.JProgressBar jpb_carro2;
     private javax.swing.JSpinner sp_velocidad;
     private javax.swing.JTextField tf_marca;
     private javax.swing.JTextField tf_modelo;
     // End of variables declaration//GEN-END:variables
+
+
 }

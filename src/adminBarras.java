@@ -62,11 +62,12 @@ public class adminBarras extends Thread{
 
     @Override
     public void run() {
-        while (avanzar) {            
+        while (true) {            
             juga1.setValue(juga1.getValue() + vel1);
             juga2.setValue(juga2.getValue() + vel2);
-            if (juga1.getValue() == 500 || juga2.getValue() == 500) {
-                avanzar = false;
+            if (juga1.getValue() >= 500 || juga2.getValue() >= 500) {
+//                avanzar = false;
+                break;
             }
             try {
                     Thread.sleep(50);

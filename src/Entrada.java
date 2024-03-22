@@ -477,6 +477,9 @@ public class Entrada extends javax.swing.JFrame {
     }//GEN-LAST:event_jButton4MouseClicked
 
     private void jButton5MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButton5MouseClicked
+//        tiempo = new hiloCronometro(jl_cronometro, true);
+//        tiempo.run();
+        
         DefaultComboBoxModel modelo = (DefaultComboBoxModel)jcb_jugador1.getModel();
         DefaultComboBoxModel modelo2 = (DefaultComboBoxModel)jcb_juga2.getModel();
         Carro car1 = (Carro)modelo.getSelectedItem();
@@ -484,14 +487,8 @@ public class Entrada extends javax.swing.JFrame {
         
         adminBarras barritas = new adminBarras(jpb_carro1, jpb_carro2, car1.getVelocidad(), car2.getVelocidad(), true);
         barritas.run();
-        
-        
-        
-        
-        
-        
-        
-        
+        //System.out.println(System.nanoTime());
+         
     }//GEN-LAST:event_jButton5MouseClicked
 
     private void bt_crearCarroActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bt_crearCarroActionPerformed
@@ -503,12 +500,14 @@ public class Entrada extends javax.swing.JFrame {
     private void jpb_carro1StateChanged(javax.swing.event.ChangeEvent evt) {//GEN-FIRST:event_jpb_carro1StateChanged
         
         if (jpb_carro1.getValue() == 500) {
+            tiempo.setAvanzar(false);
             JOptionPane.showMessageDialog(jd_jugar, "El jugador 1 ha ganado");
         }
     }//GEN-LAST:event_jpb_carro1StateChanged
 
     private void jpb_carro2StateChanged(javax.swing.event.ChangeEvent evt) {//GEN-FIRST:event_jpb_carro2StateChanged
         if (jpb_carro2.getValue() == 500) {
+            tiempo.setAvanzar(false);
             JOptionPane.showMessageDialog(jd_jugar, "El jugador 2 ha ganado");
         }
     }//GEN-LAST:event_jpb_carro2StateChanged
@@ -594,6 +593,6 @@ public class Entrada extends javax.swing.JFrame {
     private javax.swing.JTextField tf_marca;
     private javax.swing.JTextField tf_modelo;
     // End of variables declaration//GEN-END:variables
-
+    hiloCronometro tiempo = new hiloCronometro();
 
 }

@@ -1,4 +1,5 @@
 
+import java.util.Date;
 import javax.swing.JLabel;
 
 /*
@@ -20,7 +21,8 @@ public class hiloCronometro extends Thread{
         this.avanzar = avanzar;
     }
 
-    
+    public hiloCronometro() {
+    }
 
     public JLabel getTiempo() {
         return tiempo;
@@ -46,10 +48,22 @@ public class hiloCronometro extends Thread{
 
     @Override
     public void run() {
+        int contS = 0; 
+        int contM = 0; 
         
-        while (avanzar) {            
-            String crono = "00:00";
-            
+        if (contS == 60) {
+            contM++;
+            contS = 0;
+        }else{
+            contS++;
+        }
+        tiempo.setText("0"+contM+":"+contS);
+        
+            try {
+                Thread.sleep(2);
+            } catch (Exception e) {
+                
+            }
         }
         
         

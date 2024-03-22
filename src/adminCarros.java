@@ -51,8 +51,7 @@ public class adminCarros {
                 FileInputStream entrada = new FileInputStream(archivo);
                 ObjectInputStream objeto  = new ObjectInputStream(entrada);
                 try {
-                    temp = (Carro) objeto.readObject();
-                    while (temp != null) {
+                    while ((temp = (Carro) objeto.readObject()) != null) {
                         listacarros.add(temp);
                     }
                 } catch (EOFException e) {

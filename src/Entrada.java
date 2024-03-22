@@ -143,8 +143,18 @@ public class Entrada extends javax.swing.JFrame {
         jLabel7.setText("Jugador 1 ");
         jPanel3.add(jLabel7, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 90, -1, -1));
 
+        jcb_juga2.addItemListener(new java.awt.event.ItemListener() {
+            public void itemStateChanged(java.awt.event.ItemEvent evt) {
+                jcb_juga2ItemStateChanged(evt);
+            }
+        });
         jPanel3.add(jcb_juga2, new org.netbeans.lib.awtextra.AbsoluteConstraints(210, 120, 150, -1));
 
+        jcb_jugador1.addItemListener(new java.awt.event.ItemListener() {
+            public void itemStateChanged(java.awt.event.ItemEvent evt) {
+                jcb_jugador1ItemStateChanged(evt);
+            }
+        });
         jPanel3.add(jcb_jugador1, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 120, 150, -1));
 
         jllable.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
@@ -340,7 +350,7 @@ public class Entrada extends javax.swing.JFrame {
 
     private void jButton1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButton1MouseClicked
         this.setVisible(false);
-        jd_partida.setLocationRelativeTo(this);
+        //jd_partida.setLocationRelativeTo(null);
         jd_partida.pack();
         jd_partida.setVisible(true);
         
@@ -349,7 +359,8 @@ public class Entrada extends javax.swing.JFrame {
     }//GEN-LAST:event_jButton1MouseClicked
 
     private void jButton3MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButton3MouseClicked
-        jd_creacionCarros.setLocationRelativeTo(this);
+        jd_partida.setVisible(false);
+        //jd_creacionCarros.setLocationRelativeTo(null);
         jd_creacionCarros.pack();
         jd_creacionCarros.setVisible(true);
     }//GEN-LAST:event_jButton3MouseClicked
@@ -379,11 +390,30 @@ public class Entrada extends javax.swing.JFrame {
         
         jd_creacionCarros.setVisible(false);
         jd_partida.pack();
-        jd_partida.setLocationRelativeTo(this);
+        jd_partida.setLocationRelativeTo(null);
         jd_partida.setVisible(true);
-             
+            
+        tf_marca.setText("");
+        tf_modelo.setText("");
+        sp_velocidad.setValue(0);
         
     }//GEN-LAST:event_bt_crearCarroMouseClicked
+
+    private void jcb_jugador1ItemStateChanged(java.awt.event.ItemEvent evt) {//GEN-FIRST:event_jcb_jugador1ItemStateChanged
+       DefaultComboBoxModel modelo = (DefaultComboBoxModel)jcb_jugador1.getModel();
+       Carro carrito = (Carro)modelo.getSelectedItem();
+       jl_jug1Marca.setText(carrito.getMarca());
+       jl_jug1Modelo.setText(carrito.getModelo());
+       jl_jug1Velocidad.setText(String.valueOf(carrito.getVelocidad())); 
+    }//GEN-LAST:event_jcb_jugador1ItemStateChanged
+
+    private void jcb_juga2ItemStateChanged(java.awt.event.ItemEvent evt) {//GEN-FIRST:event_jcb_juga2ItemStateChanged
+       DefaultComboBoxModel modelo = (DefaultComboBoxModel)jcb_juga2.getModel();
+        Carro carrito = (Carro)modelo.getSelectedItem();
+        jl_jug2Marca.setText(carrito.getMarca());
+        jl_jug2Modelo.setText(carrito.getModelo());
+        jl_jug2Velocidad.setText(String.valueOf(carrito.getVelocidad())); 
+    }//GEN-LAST:event_jcb_juga2ItemStateChanged
 
     /**
      * @param args the command line arguments
